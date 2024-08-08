@@ -1,0 +1,14 @@
+.parentHome-pageHolder{
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    background-color: gray;
+}
+
+.parentHome-Sidebar{
+    width: 20%;
+}
+
+.parentHome-content{
+    flex: 1 1 auto;
+}
