@@ -1,0 +1,40 @@
+.header-sectionHolder{
+    display: flex;
+    justify-content: space-between;
+    background-color: #fff;
+    padding: 22px;
+}
+
+
+.headerLeft-section{
+    border: 1px solid #F0F1F3;
+    width: 30%;
+    border-radius: 7px;
+    display: flex;
+    align-items: center;
+    gap:3px;
+    justify-content: left;
+    padding: 12px;
+}
+
+.headerLeft-section > input{
+    background-color: transparent;
+    border: none;
+    height: 100%;
+    width: 100%;
+}
+
+.headerLeft-section > input:focus{
+    outline: none;
+}
+
+.headerRight-section {
+    text-align: right; 
+    /* padding-top: 10px;  */
+}
+
+.headerRight-section img {
+    display: inline-block;
+    margin-left: 15px; 
+    vertical-align: middle; 
+}

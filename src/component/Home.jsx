@@ -2,6 +2,7 @@ import React from 'react';
 import "./css/Home.css";
 import Sidebar from './sidebar';
 import Dashboard from './page/dashboard';
+import HeaderSearchBar from './reusable/headerSearchBar';
 
 const Home = () => {
   return (
@@ -10,7 +11,10 @@ const Home = () => {
             <Sidebar/>
         </section>
       <div className='parentHome-content'>
-        <Dashboard/>
+        <HeaderSearchBar/>
+        <div>
+          <Dashboard/>
+        </div>
       </div>
     </div>
   )

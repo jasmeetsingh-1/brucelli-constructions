@@ -27,7 +27,10 @@ const Sidebar = () => {
             <section className="sidebar-content-holder">
                 <ul>
                     {sidebarContent.map((item)=>{
-                        return <li><img src={item.imageSRC} alt={item.label}/>{item.label}</li>
+                        return <li>
+                                <img src={item.imageSRC} alt={item.label}/>
+                                {item.label}
+                            </li>
                     })}
                 </ul>
             </section>

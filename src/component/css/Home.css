@@ -2,7 +2,8 @@
     display: flex;
     width: 100vw;
     height: 100vh;
-    background-color: gray;
+    background-color: #f0f1f3;
+    gap:2px;
 }
 
 .parentHome-Sidebar{
