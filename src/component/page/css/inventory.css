@@ -102,11 +102,17 @@
 
 .inventory-productTable{
     width: 100%;
+    border-spacing: 0;
 }
 
-.inventory-productTable thead tr,
-.inventory-productTable tbody tr{
+.inventory-productTable thead th,
+.inventory-productTable tbody td{
     border-bottom: 1px solid #D0D3D9;
+}
+
+.inventory-productTable tbody tr:last-child td,
+.inventory-productTable tbody tr:nth-last-child(2) td{
+    border:none;
 }
 
 .inventory-productTable thead tr th{
@@ -120,4 +126,9 @@
     color: #48505E;
     padding: 12px;
     text-align: left;
+}
+
+
+.productTable-footer tr td{
+    margin-top: 12px;
 }

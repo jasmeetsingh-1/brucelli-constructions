@@ -184,6 +184,7 @@ const Inventory = () => {
                         <td style={{color:item.colorCode}}>{item.productAvailablity}</td>
                     </tr>
                 })}
+                <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
             </tbody>
             <tfoot className='productTable-footer'>
                 <tr>
