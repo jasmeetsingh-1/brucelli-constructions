@@ -12,7 +12,8 @@ const Home = () => {
         </section>
       <div className='parentHome-content'>
         <HeaderSearchBar/>
-        <div>
+        <div className='dashboardHolder-home'>
+          {/* here component will change based on the selected one  */}
           <Dashboard/>
         </div>
       </div>

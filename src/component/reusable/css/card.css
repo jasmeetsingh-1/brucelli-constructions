@@ -1,0 +1,12 @@
+.card{
+    background-color: #FFFFFF;
+    border-radius:8px;
+    padding: 12px;
+    min-height: 200px;
+}
+
+.card .cardHeader{
+    color: #383E49;
+    font-size: large;
+    font-weight: 500;
+}

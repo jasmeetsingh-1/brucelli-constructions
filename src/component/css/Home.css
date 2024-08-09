@@ -12,4 +12,13 @@
 
 .parentHome-content{
     flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
 }
+
+
+.dashboardHolder-home{
+    flex: 1 1 auto;
+    overflow-y: auto;
+}
+
