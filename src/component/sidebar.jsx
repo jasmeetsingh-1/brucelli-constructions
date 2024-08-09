@@ -4,8 +4,7 @@ import "./css/sidebar.css";
 import settings from "../assets/Settings.svg";
 import logout from "../assets/Log Out.svg";
 
-const Sidebar = () => {
-    const [sidebarSelected, setSidebarSelected] = useState(1);
+const Sidebar = ({sidebarSelected,setSidebarSelected}) => {
     // { label: "Dashboards", value: 1 },
     // { label: "Inventory", value: 2 },
     // { label: "Contractors", value: 3 },

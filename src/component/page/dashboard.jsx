@@ -6,15 +6,15 @@ const Dashboard = () =>{
     return (
     <div className="dashboards-page-holder">
         <section className="dashboard-leftSection">
-            <div><Card><div className="cardHeader">Purchase Overview</div></Card></div>
-            <div><Card><div className="cardHeader">Purchase & Use</div></Card></div>
-            <div><Card><div className="cardHeader">Most Purchased Stock</div></Card></div>
+            <div><Card><h3 className="cardHeader">Purchase Overview</h3></Card></div>
+            <div><Card><h3 className="cardHeader">Purchase & Use</h3></Card></div>
+            <div><Card><h3 className="cardHeader">Most Purchased Stock</h3></Card></div>
         </section>
         <section className="dashboard-rightSection">
-            <div><Card><div className="cardHeader">Inventory Summary</div></Card></div>
-            <div><Card><div className="cardHeader">Product Summary</div></Card></div>
-            <div><Card><div className="cardHeader">Order Summary</div></Card></div>
-            <div><Card><div className="cardHeader">Low Quality Stock</div></Card></div>
+            <div><Card><h3 className="cardHeader">Inventory Summary</h3></Card></div>
+            <div><Card><h3 className="cardHeader">Product Summary</h3></Card></div>
+            <div><Card><h3 className="cardHeader">Order Summary</h3></Card></div>
+            <div><Card><h3 className="cardHeader">Low Quality Stock</h3></Card></div>
         </section>
     </div>);
 }

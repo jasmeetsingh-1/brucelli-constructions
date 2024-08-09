@@ -1,0 +1,123 @@
+.inventory-headerSection{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.inventory-mainHolder{
+    padding: 12px;
+    width: 100%;
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.overall-inventory-cardHolder{
+    display: flex;
+}
+
+.overall-inventory-card{
+    flex: 1;
+    padding: 0 50px;
+    border-right: 1px solid #F0F1F3;
+}
+
+.overall-inventory-card:first-child{
+    padding-left: 0 !important;
+}
+
+.overall-inventory-card:last-child{
+    border: none !important;
+}
+
+.overall-inventory-card > h5{
+    margin: 0 0 12px 0;
+    font-weight: 600;
+    font-size: 16px;
+}
+
+
+.overall-inventory-cardBody{
+    display: flex;
+    gap: 12px;
+    justify-content: space-between;
+}
+
+.overall-inventory-cardBody > div{
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.overall-inventory-cardBody > div span:nth-child(1){
+    color: #5D6679;
+    font-weight: 600;
+}
+
+.overall-inventory-cardBody > div span:nth-child(2){
+    color: #858D9D;
+}
+
+
+/* product table css */
+
+.productTable-header-buttons {
+    display: flex;
+    gap: 12px;
+}
+
+.inventory-productTable-header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.productTable-header-buttons > button:hover{
+    border: 1px solid #1366D9;
+    background-color: #1366D9;
+    color: #fff;
+}
+
+.productTable-header-buttons > button:hover > svg > path{
+    stroke: #fff;
+}
+
+.productTable-header-buttons > button,
+.productTable-footer tr td button{
+    border: 1px solid #D0D3D9;
+    border-radius: 4px;
+    color: #5D6679;
+    font-weight: 500;
+    font-size: 16px;
+    padding: 10px 16px;
+    display: flex;
+    justify-content: center;
+    gap:8px;
+    align-items: center;
+    background: transparent;
+    transition: background-color ease-in-out 0.5s, border ease-in-out 0.5s;
+}
+
+/* table css */
+
+.inventory-productTable{
+    width: 100%;
+}
+
+.inventory-productTable thead tr,
+.inventory-productTable tbody tr{
+    border-bottom: 1px solid #D0D3D9;
+}
+
+.inventory-productTable thead tr th{
+    color: #5D6679;
+    text-align: left;
+    padding: 12px;
+    font-weight: 500;
+}
+
+.inventory-productTable tbody tr td{
+    color: #48505E;
+    padding: 12px;
+    text-align: left;
+}
