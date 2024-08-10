@@ -86,6 +86,7 @@
 .productTable-header-buttons > button,
 .productTable-footer tr td button{
     border: 1px solid #D0D3D9;
+    outline: none;
     border-radius: 4px;
     color: #5D6679;
     font-weight: 500;

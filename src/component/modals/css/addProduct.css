@@ -1,0 +1,95 @@
+
+.addProductModal{
+    border-radius: 8px;
+    outline: none;
+    border: none;
+}
+
+.modalImageDragArea {
+    display: flex;
+    gap: 21px;
+    justify-content: center;
+    align-items: center;
+    margin: 12px 0;
+}
+
+.dragArea{
+    width: 80px;
+    height: 80px;
+    border: 2px dashed #9D9D9D;
+    border-radius: 10px;
+}
+
+.dragAreaContent{ text-align: center;}
+
+.dragAreaContent > p{
+    margin: 0;
+    color: #858D9D;
+    text-align: center;
+}
+
+.dragAreaContent > span{
+    color:#448DF2;
+    cursor: pointer;
+}
+
+.dragAreaContent > span:hover{
+    text-decoration: underline;
+}
+
+.newProduct-form-row{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 9px 30px;
+}
+
+.newProduct-form-row > input:focus{
+    outline: none;
+}
+
+.newProduct-form-row > input::placeholder{
+    color: #858D9D;
+}
+
+.newProduct-form-row > input{
+    width: 65%;
+    color: #858D9D;
+    border: 1px solid #D0D5DD;
+    border-radius: 8px;
+    padding:10px 12px;
+}
+
+.newProduct-form-row > label{
+    color: #48505E;
+    font-size: 16px;
+}
+
+
+.modalFooter > button{
+    border: 1px solid #D0D3D9;
+    outline: none;
+    border-radius: 4px;
+    color: #5D6679;
+    font-weight: 500;
+    font-size: 16px;
+    padding: 10px 16px;
+    display: flex;
+    justify-content: center;
+    gap:8px;
+    align-items: center;
+    background: transparent;
+}
+
+.modalFooter button:last-child{
+    border: 1px solid #1366D9;
+    background-color: #1366D9;
+    color: #fff;
+}
+
+.modalFooter{
+    display: flex;
+    justify-content: flex-end;
+    padding: 18px 30px;
+    gap: 22px;
+}

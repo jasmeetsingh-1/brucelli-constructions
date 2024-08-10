@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import "./css/inventory.css";
 import { Card } from '../reusable/Card';
+import AddProductModal from '../modals/addProduct';
 
 const Inventory = () => {
     let sampleTableData = [
@@ -62,6 +63,7 @@ const Inventory = () => {
         }
     ];
     const [tableData, setTableData] = useState(sampleTableData);
+    const [showAddProductModal,setShowAddProductModal] = useState(false);
     
     
     useEffect(()=>{
@@ -71,9 +73,9 @@ const Inventory = () => {
                 colorCode:`${item.productAvailablity === "Low stock" ? "#E19133": item.productAvailablity === "In-stock" ? "#10A760": item.productAvailablity === "Out of stock" ? "#DA3E33":""}`,
             }
         })
-        console.log("smapleTable Data >>>>", newSampleTableData);
+        console.log("useeffect");
         setTableData(newSampleTableData);
-    });
+    },[]);
 
   return (
     <div className='inventory-mainHolder'>
@@ -135,10 +137,10 @@ const Inventory = () => {
         <div className='inventory-productTable-header'>
             <h3 className='cardHeader'>Products</h3>
             <div className='productTable-header-buttons'>
-                <button>Add Product</button>
+                <button onClick={()=>setShowAddProductModal(true)}>Add Product</button>
                 <button> 
                     <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M5 10H15M2.5 5H17.5M7.5 15H12.5" stroke="#5D6679" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M5 10H15M2.5 5H17.5M7.5 15H12.5" stroke="#5D6679" strokeWidth="1.67" strokeLinecap="round" strokeLinejoin="round"/>
                     </svg>
                     Filters
                 </button>
@@ -187,6 +189,7 @@ const Inventory = () => {
             </tfoot>
         </table>
       </Card>
+      <AddProductModal showAddProductModal={showAddProductModal} setShowAddProductModal={setShowAddProductModal}/>
     </div>
   )
 }
