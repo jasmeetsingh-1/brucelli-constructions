@@ -13,22 +13,6 @@ const Inventory = () => {
             productAvailablity: "In-stock",
         },
         {
-            product: "Steel Beams",
-            buyingPrice: "£120",
-            quantity: "30",
-            productUnit: "15m x 2m x 3m",
-            lastOrderedDate: "10/11/22",
-            productAvailablity: "Low stock",
-        },
-        {
-            product: "Wooden Planks",
-            buyingPrice: "£20",
-            quantity: "100",
-            productUnit: "8ft x 4ft",
-            lastOrderedDate: "09/10/22",
-            productAvailablity: "Out of stock",
-        },
-        {
             product: "Glass Panels",
             buyingPrice: "£75",
             quantity: "50",
