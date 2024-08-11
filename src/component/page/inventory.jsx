@@ -75,7 +75,7 @@ const Inventory = () => {
         })
         console.log("useeffect");
         setTableData(newSampleTableData);
-    },[]);
+    },[showAddProductModal]);
 
   return (
     <div className='inventory-mainHolder'>
@@ -189,7 +189,7 @@ const Inventory = () => {
             </tfoot>
         </table>
       </Card>
-      <AddProductModal showAddProductModal={showAddProductModal} setShowAddProductModal={setShowAddProductModal}/>
+      <AddProductModal setTableData={setTableData} showAddProductModal={showAddProductModal} setShowAddProductModal={setShowAddProductModal}/>
     </div>
   )
 }
