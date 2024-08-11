@@ -12,3 +12,11 @@ ul{
 button{
   cursor: pointer;
 }
+
+input:focus{
+  outline: none;
+}
+
+label{
+  margin: 0;
+}

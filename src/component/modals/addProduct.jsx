@@ -53,7 +53,7 @@ const AddProductModal = ({showAddProductModal, setShowAddProductModal, setTableD
                 initialValues={addProductInititalValues}
                 onSubmit={(values,{resetForm})=>{newProductSubmitHandler(values,resetForm)}}
             >
-                {({})=>{
+                {()=>{
                     return <Form className="newProduct-form">
                         <div className="newProduct-form-row">
                             <label>Product Name</label>

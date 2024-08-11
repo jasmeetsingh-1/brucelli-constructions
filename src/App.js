@@ -1,10 +1,12 @@
 import './App.css';
 import Home from './component/Home';
+import Login from './component/page/login';
 
 function App() {
   return (
     <div>
-      <Home/>
+      {/* <Home/> */}
+      <Login/>
     </div>
   );
 }
