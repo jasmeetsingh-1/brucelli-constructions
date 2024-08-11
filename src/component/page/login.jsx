@@ -4,7 +4,7 @@ import { Field, Form, Formik } from 'formik';
 import { toast, ToastContainer } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
 
-const Login = () => {
+const Login = ({setIsLoggedIn}) => {
     const toastConfig = {
         position: "bottom-right",
         autoClose: 5000,
@@ -29,7 +29,13 @@ const Login = () => {
         if(values.loginEmail !== "test@gmail.com") return toast.error("Incorrect Email! ", toastConfig);
         if(values.loginPassword !== "Password@123" ) return toast.error("Incorrect Password! ", toastConfig);
 
-        return toast.success("Login Successful!", toastConfig);
+        toast.success("Login Successful !", toastConfig);
+
+        setTimeout(()=>{
+            setIsLoggedIn(true);
+        },[2000])
+
+        // return toast.success("Login Successful!", toastConfig);
     }
   return (
     <div className='loginPage-holder'>

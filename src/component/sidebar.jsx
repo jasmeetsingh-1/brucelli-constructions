@@ -4,7 +4,7 @@ import "./css/sidebar.css";
 import settings from "../assets/Settings.svg";
 import logout from "../assets/Log Out.svg";
 
-const Sidebar = ({sidebarSelected,setSidebarSelected}) => {
+const Sidebar = ({sidebarSelected,setSidebarSelected, setIsLoggedIn}) => {
     // { label: "Dashboards", value: 1 },
     // { label: "Inventory", value: 2 },
     // { label: "Contractors", value: 3 },
@@ -69,7 +69,7 @@ const Sidebar = ({sidebarSelected,setSidebarSelected}) => {
         </div>
         <div className='sidebar-footer'>
             <button><img src={settings} alt="setting"/>Settings</button>
-            <button><img src={logout} alt="logout"/> Log Out</button>
+            <button onClick={()=>{setIsLoggedIn(false)}}><img src={logout} alt="logout"/> Log Out</button>
         </div>
     </div>
   )

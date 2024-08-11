@@ -5,8 +5,8 @@ import Dashboard from './page/dashboard';
 import HeaderSearchBar from './reusable/headerSearchBar';
 import Inventory from './page/inventory';
 
-const Home = () => {
-  const [sidebarSelected,setSidebarSelected]=useState(2);
+const Home = ({setIsLoggedIn}) => {
+  const [sidebarSelected,setSidebarSelected]=useState(1);
 
   const renderComponent = () => {
     {/* here component will change based on the selected one  */}
@@ -23,7 +23,7 @@ const Home = () => {
   return (
     <div className='parentHome-pageHolder'>
         <section className='parentHome-Sidebar'>
-            <Sidebar sidebarSelected={sidebarSelected} setSidebarSelected={setSidebarSelected}/>
+            <Sidebar setIsLoggedIn={setIsLoggedIn} sidebarSelected={sidebarSelected} setSidebarSelected={setSidebarSelected}/>
         </section>
       <div className='parentHome-content'>
         <HeaderSearchBar/>
