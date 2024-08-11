@@ -1,14 +1,45 @@
 import React from 'react';
 import "./css/login.css";
 import { Field, Form, Formik } from 'formik';
+import { toast, ToastContainer } from 'react-toastify';
+import "react-toastify/dist/ReactToastify.css";
 
 const Login = () => {
+    const toastConfig = {
+        position: "bottom-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+      }
+    const loginInitialValues = {
+        loginEmail:"",
+        loginPassword:"",
+        rememberCheckBox: false,
+    }
+
+    const loginSubmitHandler = (values) =>{
+        console.log(values);
+        if(!values.loginEmail || !values.loginPassword){
+            return  toast.warn("All Fields are mandatory", toastConfig);
+        }
+        if(values.loginEmail !== "test@gmail.com") return toast.error("Incorrect Email! ", toastConfig);
+        if(values.loginPassword !== "Password@123" ) return toast.error("Incorrect Password! ", toastConfig);
+
+        return toast.success("Login Successful!", toastConfig);
+    }
   return (
     <div className='loginPage-holder'>
         <section className="loginForm-holder">
             <div className='login-form-logo'>
             </div>
-            <Formik>
+            <Formik
+                initialValues={loginInitialValues}
+                onSubmit={loginSubmitHandler}
+            >
                 {()=>{
                     return <Form className='loginForm'>
                         <div className='loginform-row'>
@@ -47,6 +78,7 @@ const Login = () => {
                 }}
             </Formik>
         </section>
+        <ToastContainer/>
     </div>
   )
 }

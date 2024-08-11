@@ -67,6 +67,8 @@ form.loginForm {
     gap:30px;
 }
 
+.extraFormButtons > section > label{ cursor: pointer;}
+
 .loginform-row > button{
     border: 1px solid #1366D9;
     border-radius: 4px;
