@@ -4,11 +4,9 @@ import Home from './component/Home';
 import Login from './component/page/login';
 
 function App() {
-  const [isLoggedIn,setIsLoggedIn] = useState(false);
+  const [isLoggedIn,setIsLoggedIn] = useState(true);
   return (
     <div>
-      {/* <Home/> */}
-      {/* <Login/> */}
       {
         isLoggedIn ? <Home setIsLoggedIn={setIsLoggedIn}/> :<Login setIsLoggedIn={setIsLoggedIn}/>
       }

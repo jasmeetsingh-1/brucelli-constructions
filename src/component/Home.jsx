@@ -4,9 +4,10 @@ import Sidebar from './sidebar';
 import Dashboard from './page/dashboard';
 import HeaderSearchBar from './reusable/headerSearchBar';
 import Inventory from './page/inventory';
+import ContractorsPage from './page/contractors';
 
 const Home = ({setIsLoggedIn}) => {
-  const [sidebarSelected,setSidebarSelected]=useState(1);
+  const [sidebarSelected,setSidebarSelected]=useState(3);
 
   const renderComponent = () => {
     {/* here component will change based on the selected one  */}
@@ -15,6 +16,8 @@ const Home = ({setIsLoggedIn}) => {
         return <Dashboard />;
       case 2:
         return <Inventory />;
+      case 3:
+          return <ContractorsPage />;
       default:
         return <Dashboard />; // Default component
     }
