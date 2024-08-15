@@ -93,3 +93,11 @@
     padding: 18px 30px;
     gap: 22px;
 }
+
+
+.dragAreaContractors{
+    border-radius: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

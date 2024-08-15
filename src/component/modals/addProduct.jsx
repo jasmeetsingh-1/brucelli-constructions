@@ -127,7 +127,6 @@ const AddProductModal = ({showAddProductModal, setShowAddProductModal, setTableD
                 }}
             </Formik>
         </div>
-        
       </Card>
     </Modal>
   );
