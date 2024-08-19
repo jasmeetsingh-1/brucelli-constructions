@@ -52,57 +52,80 @@ const AddNewContractorModal = ({showAddContractorModal, setShowAddContractorModa
         <div className="addNewModalFormHolder">
             <Formik
                 initialValues={addProductInititalValues}
-                onSubmit={(values,{resetForm})=>{newProductSubmitHandler(values,resetForm)}}
+                onSubmit={(values,{resetForm})=>{console.log("contractorModal",values); newProductSubmitHandler(values,resetForm)}}
             >
                 {()=>{
                     return <Form className="newProduct-form">
                         <div className="newProduct-form-row">
-                            <label>Name</label>
+                            <label htmlFor="contractorname">Name</label>
                             <Field
                                 type="text"
                                 name="contractorName"
+                                id="contractorname"
                                 placeHolder="Enter Supplier name"
                             />
                         </div>
                         <div className="newProduct-form-row">
-                            <label>Email</label>
+                            <label htmlFor="contractoEmail">Email</label>
                             <Field
                                 type="text"
                                 name="contractorEmail"
+                                id="contractoEmail"
                                 placeHolder="Enter Contractor Email"
                             />
                         </div>
                         <div className="newProduct-form-row">
-                            <label>Product</label>
+                            <label htmlFor="contractoProduct">Product</label>
                             <Field
                                 type="text"
                                 name="contractorProductId"
+                                id="contractoProduct"
                                 placeHolder="Enter Product"
                             />
                         </div>
                         <div className="newProduct-form-row">
-                            <label>Category</label>
+                            <label htmlFor="contractorCategory">Category</label>
                             <Field
                                 type="text"
                                 name="contractorCategory"
+                                id="contractorCategory"
                                 placeHolder="Select Product Category"
                             />
                         </div>
                         <div className="newProduct-form-row">
-                            <label>Contact Number</label>
+                            <label htmlFor="contractorContactNumber">Contact Number</label>
                             <Field
                                 type="text"
                                 name="contractorContactNumber"
+                                id="contractorContactNumber"
                                 placeHolder="Enter supplier contact number"
                             />
                         </div>
                         <div className="newProduct-form-row">
                             <label>Type</label>
-                            <Field
-                                type="text"
-                                name="contractorType"
-                                placeHolder="Enter threshold value"
-                            />
+                            <div className="specialTypeRowContractorModal">
+                                <div>
+                                <Field
+                                    type="radio"
+                                    name="contractorType"
+                                    id="notTakingReturn"
+                                    value="Not taking return"
+                                    placeHolder="Enter threshold value"
+                                /> 
+                                <label htmlFor="notTakingReturn"> Not Taking return</label>
+                                </div>
+                                <div>
+                                    <Field
+                                        type="radio"
+                                        name="contractorType"
+                                        value="Taking return"
+                                        id="takingReturn"
+                                        placeHolder="Enter threshold value"
+                                        /> 
+                                        <label htmlFor="takingReturn">Taking return</label>
+                                </div>
+                                
+                            </div>
                         </div>
                         <div className="modalFooter">
                             <button onClick={(e)=>{e.preventDefault();setShowAddContractorModal(false)}}>Discard</button>
