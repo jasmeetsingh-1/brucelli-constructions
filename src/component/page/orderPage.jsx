@@ -150,7 +150,7 @@ function OrderPage(){
                         </div>
                         <div>
                             <span>2</span>
-                            <span className='inventory-cardMetaData'>Not in stock</span>
+                            <span className='inventory-cardMetaData'>Not In Stock</span>
                         </div>
                     </section>
                 </div>
