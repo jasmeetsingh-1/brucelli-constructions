@@ -3,6 +3,8 @@ import "./css/customTable.css";
 
 function CustomTable({tableData, tableHeader}){
 
+    const colorCodedSection = ["productAvailablity","status","type"];
+
     return <table className="customTable-mainHolder">
     <thead>
         <tr>
@@ -15,11 +17,11 @@ function CustomTable({tableData, tableHeader}){
     {tableData.map((item, index) => {
     return (
         <tr key={index} className='customTable-table-row'>
-            {Object.keys(item).map((key, keyIndex) => (
-                <td key={keyIndex} style={key === 'productAvailablity' ? {color: item.colorCode} : {}}>
+            {Object.keys(item).map((key, keyIndex) => {
+                if(key !== "colorCode") return <td key={keyIndex} className={colorCodedSection.includes(key) ? item.colorCode : ""}>
                     {item[key]}
                 </td>
-                ))}
+                })}
             </tr>
         );
     })}

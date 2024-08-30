@@ -73,10 +73,11 @@ const Inventory = () => {
     const tableHeader = ["Product","Buying Price","Quantity","Unit","Last Ordered","Availabilty"];
 
     useEffect(()=>{
+        //this css classes added here would evenutally reflect in the customtable component
         const newSampleTableData = tableData.map((item)=>{
             return {
                 ...item,
-                colorCode:`${item.productAvailablity === "Low stock" ? "#E19133": item.productAvailablity === "In-stock" ? "#10A760": item.productAvailablity === "Out of stock" ? "#DA3E33":""}`,
+                colorCode:`${item.productAvailablity === "Low stock" ? " orangeTextColor": item.productAvailablity === "In-stock" ? " greenTextColor": item.productAvailablity === "Out of stock" ? " redTextColor":""}`,
             }
         })
         console.log("useeffect");

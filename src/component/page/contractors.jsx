@@ -107,7 +107,7 @@ const ContractorsPage = () => {
         return{
           ...item,
           onTheWay: item.onTheWay === "" ? "-" : item.onTheWay, 
-          colorCode:`${item.type === "Taking Return" ? "#36C045":"#F36F7C"}`
+          colorCode:`${item.type === "Taking Return" ? " greenTextColor":" redTextColor"}`
         }
     })
     console.log("useeffect");

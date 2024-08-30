@@ -102,7 +102,7 @@ function OrderPage(){
         const newSampleTableData = tableData.map((item)=>{
             return {
                 ...item,
-                colorCode:`${item.status === "Delayed" ? "#F79009": item.status === "Confirmed" ? "#1570EF": item.status === "Returned" ? "#667085":""}`,
+                colorCode:`${item.status === "Delayed" ? " orangeTextColor": item.status === "Confirmed" ? " blueTextColor": item.status === "Returned" ? " grayTextColor":""}`,
             }
         })
         console.log("useeffect");

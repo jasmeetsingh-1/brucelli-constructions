@@ -48,3 +48,20 @@
     background: transparent;
     transition: background-color ease-in-out 0.5s, border ease-in-out 0.5s;
 }
+
+
+.greenTextColor{
+    color:rgb(16, 167, 96) !important;
+}
+.redTextColor{
+    color:rgb(218, 62, 51) !important;
+}
+.orangeTextColor{
+    color: rgb(225, 145, 51) !important;
+}
+.blueTextColor{
+    color: rgb(21, 112, 239) !important;
+}
+.grayTextColor{
+    color: rgb(102, 112, 133) !important;
+}
