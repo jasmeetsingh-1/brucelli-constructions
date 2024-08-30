@@ -83,8 +83,7 @@
     stroke: #fff;
 }
 
-.productTable-header-buttons > button,
-.productTable-footer tr td button{
+.productTable-header-buttons > button{
     border: 1px solid #D0D3D9;
     outline: none;
     border-radius: 4px;
@@ -105,32 +104,4 @@
 .inventory-productTable{
     width: 100%;
     border-spacing: 0;
-}
-
-.inventory-productTable thead th,
-.inventory-productTable tbody td{
-    border-bottom: 1px solid #D0D3D9;
-}
-
-.inventory-productTable tbody tr:last-child td,
-.inventory-productTable tbody tr:nth-last-child(2) td{
-    border:none;
-}
-
-.inventory-productTable thead tr th{
-    color: #5D6679;
-    text-align: left;
-    padding: 12px;
-    font-weight: 500;
-}
-
-.inventory-productTable tbody tr td{
-    color: #48505E;
-    padding: 15px 12px;
-    text-align: left;
-}
-
-
-.productTable-footer tr td{
-    margin-top: 12px;
 }

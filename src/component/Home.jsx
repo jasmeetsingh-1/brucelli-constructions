@@ -8,7 +8,7 @@ import ContractorsPage from './page/contractors';
 import OrderPage from './page/orderPage';
 
 const Home = ({setIsLoggedIn}) => {
-  const [sidebarSelected,setSidebarSelected]=useState(3);
+  const [sidebarSelected,setSidebarSelected]=useState(2);
 
   const renderComponent = () => {
     {/* here component will change based on the selected one  */}

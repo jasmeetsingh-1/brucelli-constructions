@@ -2,70 +2,76 @@ import React, { useEffect, useState } from 'react';
 import "./css/inventory.css";
 import { Card } from '../reusable/Card';
 import AddProductModal from '../modals/addProduct';
+import InventoryProductComponent from './inventoryProductComponent/inventoryProductComponent';
+import CustomTable from '../reusable/customTable';
+
+
+let sampleTableData = [
+    {
+        product: "Concrete Frames",
+        buyingPrice: "£43",
+        quantity: "43",
+        productUnit: "10m x 5m x 12m",
+        lastOrderedDate: "11/12/22",
+        productAvailablity: "In-stock",
+    },
+    {
+        product: "Glass Panels",
+        buyingPrice: "£75",
+        quantity: "50",
+        productUnit: "2m x 3m",
+        lastOrderedDate: "12/11/22",
+        productAvailablity: "In-stock",
+    },
+    {
+        product: "Aluminum Sheets",
+        buyingPrice: "£35",
+        quantity: "70",
+        productUnit: "3m x 4m",
+        lastOrderedDate: "01/01/23",
+        productAvailablity: "Out of stock",
+    },
+    {
+        product: "Cement Bags",
+        buyingPrice: "£7",
+        quantity: "500",
+        productUnit: "50kg",
+        lastOrderedDate: "15/01/23",
+        productAvailablity: "Low stock",
+    },
+    {
+        product: "Bricks",
+        buyingPrice: "£1",
+        quantity: "1000",
+        productUnit: "Standard",
+        lastOrderedDate: "05/02/23",
+        productAvailablity: "In-stock",
+    },
+    {
+        product: "Paint Cans",
+        buyingPrice: "£15",
+        quantity: "200",
+        productUnit: "5L",
+        lastOrderedDate: "25/02/23",
+        productAvailablity: "Low stock",
+    },
+    {
+        product: "PVC Pipes",
+        buyingPrice: "£10",
+        quantity: "150",
+        productUnit: "2m",
+        lastOrderedDate: "10/03/23",
+        productAvailablity: "Out of stock",
+    }
+];
 
 const Inventory = () => {
-    let sampleTableData = [
-        {
-            product: "Concrete Frames",
-            buyingPrice: "£43",
-            quantity: "43",
-            productUnit: "10m x 5m x 12m",
-            lastOrderedDate: "11/12/22",
-            productAvailablity: "In-stock",
-        },
-        {
-            product: "Glass Panels",
-            buyingPrice: "£75",
-            quantity: "50",
-            productUnit: "2m x 3m",
-            lastOrderedDate: "12/11/22",
-            productAvailablity: "In-stock",
-        },
-        {
-            product: "Aluminum Sheets",
-            buyingPrice: "£35",
-            quantity: "70",
-            productUnit: "3m x 4m",
-            lastOrderedDate: "01/01/23",
-            productAvailablity: "Out of stock",
-        },
-        {
-            product: "Cement Bags",
-            buyingPrice: "£7",
-            quantity: "500",
-            productUnit: "50kg",
-            lastOrderedDate: "15/01/23",
-            productAvailablity: "Low stock",
-        },
-        {
-            product: "Bricks",
-            buyingPrice: "£1",
-            quantity: "1000",
-            productUnit: "Standard",
-            lastOrderedDate: "05/02/23",
-            productAvailablity: "In-stock",
-        },
-        {
-            product: "Paint Cans",
-            buyingPrice: "£15",
-            quantity: "200",
-            productUnit: "5L",
-            lastOrderedDate: "25/02/23",
-            productAvailablity: "Low stock",
-        },
-        {
-            product: "PVC Pipes",
-            buyingPrice: "£10",
-            quantity: "150",
-            productUnit: "2m",
-            lastOrderedDate: "10/03/23",
-            productAvailablity: "Out of stock",
-        }
-    ];
+
     const [tableData, setTableData] = useState(sampleTableData);
     const [showAddProductModal,setShowAddProductModal] = useState(false);
-    
-    
+
+    const tableHeader = ["Product","Buying Price","Quantity","Unit","Last Ordered","Availabilty"];
+
     useEffect(()=>{
         const newSampleTableData = tableData.map((item)=>{
             return {
@@ -148,48 +154,10 @@ const Inventory = () => {
             </div>
         </div>
 
-        <table className="inventory-productTable">
-            <thead>
-                <tr>
-                    <th>Products</th>
-                    <th>Buying Price</th>
-                    <th>Quantity</th>
-                    <th>Unit</th>
-                    <th>Last Ordered</th>
-                    <th>Availablity</th>
-                </tr>
-            </thead>
-            <tbody>
-                {tableData.map((item,index)=>{
-                    return <tr key={index}>
-                        <td>{item.product}</td>
-                        <td>{item.buyingPrice}</td>
-                        <td>{item.quantity}</td>
-                        <td>{item.productUnit}</td>
-                        <td>{item.lastOrderedDate}</td>
-                        <td style={{color:item.colorCode}}>{item.productAvailablity}</td>
-                    </tr>
-                })}
-                <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-            </tbody>
-            <tfoot className='productTable-footer'>
-                <tr>
-                    <td>
-                        <button>
-                            Previous
-                        </button>
-                    </td>
-                    <td colSpan="4" style={{textAlign:"center"}}> Page 1 of 10 </td>
-                    <td>
-                        <button>
-                            Next
-                        </button>
-                    </td>
-                </tr>
-            </tfoot>
-        </table>
+        <CustomTable tableHeader={tableHeader} tableData={tableData}/>
       </Card>
-      <AddProductModal setTableData={setTableData} showAddProductModal={showAddProductModal} setShowAddProductModal={setShowAddProductModal}/>
+      <AddProductModal setTableData={setTableData} showAddProductModal={showAddProductModal} setShowAddProductModal={setShowAddProductModal}/> 
+      {/* <InventoryProductComponent/> */}
     </div>
   )
 }

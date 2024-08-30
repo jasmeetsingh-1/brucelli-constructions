@@ -2,6 +2,7 @@ import React,{useEffect, useState} from 'react';
 import "./css/contractors.css";
 import { Card } from '../reusable/Card';
 import AddNewContractorModal from '../modals/addContractor';
+import CustomTable from '../reusable/customTable';
 
 
 const contractorData = [
@@ -90,6 +91,16 @@ const contractorData = [
 const ContractorsPage = () => {
   const [tableData,setTableData]=useState(contractorData);
   const [showAddContractorModal,setShowAddContractorModal]=useState(false);
+  
+  const tableHeader = [
+    "Supplier Name",
+    "Product",
+    "Contact Name",
+    "Email",
+    "Type",
+    "On the way"
+];
+
 
   useEffect(()=>{
     const newSampleTableData = tableData.map((item)=>{
@@ -121,46 +132,7 @@ const ContractorsPage = () => {
               </div>
           </div>
 
-          <table className="inventory-productTable">
-              <thead>
-                  <tr>
-                      <th>Supplier Name</th>
-                      <th>Product</th>
-                      <th>Contact Name</th>
-                      <th>Email</th>
-                      <th>Type</th>
-                      <th>On the way</th>
-                  </tr>
-              </thead>
-              <tbody>
-                  {tableData.map((item,index)=>{
-                      return <tr key={index}>
-                          <td>{item.supplierName}</td>
-                          <td>{item.product}</td>
-                          <td>{item.supplierContactNumber}</td>
-                          <td>{item.supplierEmail}</td>
-                          <td style={{color:item.colorCode}}>{item.type}</td>
-                          <td>{item.onTheWay}</td>
-                      </tr>
-                  })}
-                  <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr> {/*to get the empty same before the footer */}
-              </tbody>
-              <tfoot className='productTable-footer'>
-                  <tr>
-                      <td>
-                          <button>
-                              Previous
-                          </button>
-                      </td>
-                      <td colSpan="4" style={{textAlign:"center"}}> Page 1 of 10 </td>
-                      <td>
-                          <button>
-                              Next
-                          </button>
-                      </td>
-                  </tr>
-              </tfoot>
-          </table>
+          <CustomTable tableData={tableData} tableHeader={tableHeader}/>
       </Card>
       <AddNewContractorModal showAddContractorModal={showAddContractorModal} setShowAddContractorModal={setShowAddContractorModal} setTableData={setTableData}/>
       </div>

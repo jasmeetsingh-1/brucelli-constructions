@@ -1,0 +1,50 @@
+
+.customTable-mainHolder thead th,
+.customTable-mainHolder tbody td{
+    border-bottom: 1px solid #D0D3D9;
+}
+
+.customTable-mainHolder tbody tr:last-child td,
+.customTable-mainHolder tbody tr:nth-last-child(2) td{
+    border:none;
+}
+
+.customTable-mainHolder thead tr th{
+    color: #5D6679;
+    text-align: left;
+    padding: 12px;
+    font-weight: 500;
+}
+
+.customTable-mainHolder tbody tr td{
+    color: #48505E;
+    padding: 15px 12px;
+    text-align: left;
+}
+
+
+.customTable-footer tr td{
+    margin-top: 12px;
+}
+
+.customTable-table-row td:nth-child(1):hover{
+    color: blue;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.customTable-footer tr td button{
+    border: 1px solid #D0D3D9;
+    outline: none;
+    border-radius: 4px;
+    color: #5D6679;
+    font-weight: 500;
+    font-size: 16px;
+    padding: 10px 16px;
+    display: flex;
+    justify-content: center;
+    gap:8px;
+    align-items: center;
+    background: transparent;
+    transition: background-color ease-in-out 0.5s, border ease-in-out 0.5s;
+}
