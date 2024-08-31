@@ -3,114 +3,43 @@ import "./css/orderPage.css";
 import { Card } from "../reusable/Card";
 import AddNewOrderModal from "../modals/addOrder";
 import CustomTable from "../reusable/customTags/customTable";
-
-let sampleTableData = [
-    {
-        product: "Product 1",
-        orderValue: "£4306",
-        quantity: "43 units",
-        orderID: "7535",
-        expectedDeliveryDate: "11/12/22",
-        status: "Delayed",
-    },
-    {
-        product: "Product 2",
-        orderValue: "£2890",
-        quantity: "22 units",
-        orderID: "7536",
-        expectedDeliveryDate: "12/01/23",
-        status: "Confirmed",
-    },
-    {
-        product: "Product 3",
-        orderValue: "£1575",
-        quantity: "15 units",
-        orderID: "7537",
-        expectedDeliveryDate: "15/01/23",
-        status: "Returned",
-    },
-    {
-        product: "Product 4",
-        orderValue: "£2100",
-        quantity: "30 units",
-        orderID: "7538",
-        expectedDeliveryDate: "20/01/23",
-        status: "Confirmed",
-    },
-    {
-        product: "Product 5",
-        orderValue: "£1234",
-        quantity: "12 units",
-        orderID: "7539",
-        expectedDeliveryDate: "25/01/23",
-        status: "Delayed",
-    },
-    {
-        product: "Product 6",
-        orderValue: "£4500",
-        quantity: "50 units",
-        orderID: "7540",
-        expectedDeliveryDate: "30/01/23",
-        status: "Returned",
-    },
-    {
-        product: "Product 7",
-        orderValue: "£1890",
-        quantity: "18 units",
-        orderID: "7541",
-        expectedDeliveryDate: "05/02/23",
-        status: "Confirmed",
-    },
-    {
-        product: "Product 8",
-        orderValue: "£3120",
-        quantity: "25 units",
-        orderID: "7542",
-        expectedDeliveryDate: "10/02/23",
-        status: "Delayed",
-    },
-    {
-        product: "Product 9",
-        orderValue: "£2785",
-        quantity: "20 units",
-        orderID: "7543",
-        expectedDeliveryDate: "15/02/23",
-        status: "Returned",
-    },
-    {
-        product: "Product 10",
-        orderValue: "£3550",
-        quantity: "35 units",
-        orderID: "7544",
-        expectedDeliveryDate: "20/02/23",
-        status: "Confirmed",
-    },
-];
+import axios from "axios";
 
 function OrderPage(){
     const tableHeader = [
-        { label: "Products", value: "product" },
-        { label: "Order Value", value: "orderValue" },
-        { label: "Quantity", value: "quantity" },
-        { label: "Order ID", value: "orderID" },
-        { label: "Expected Delivery", value: "expectedDeliveryDate" },
-        { label: "Status", value: "status" }
+        { label: "Products", value: "newOrderProduct" },
+        { label: "Order Value", value: "newOrderValue" },
+        { label: "Quantity", value: "newOrderValue" },
+        { label: "Order ID", value: "_id" },
+        { label: "Expected Delivery", value: "newOrderDOD" },
+        { label: "Status", value: "orderStatus" }
     ];
         
     
     useEffect(()=>{
-        const newSampleTableData = tableData.map((item)=>{
+        axios.defaults.headers.post['Content-Type'] ='application/json;charset=utf-8';
+        axios.get("http://localhost:2000/orders/")
+        .then((result)=>{
+            console.log("api resposne >>>>>", result.data);
+            formatTableData(result.data);
+        }).catch((error)=>{
+            console.log("some error in product api", error);
+        })
+    },[]);
+
+
+    function formatTableData(data){
+        const newSampleTableData = data.map((item)=>{
             return {
                 ...item,
                 colorCode:`${item.status === "Delayed" ? " orangeTextColor": item.status === "Confirmed" ? " blueTextColor": item.status === "Returned" ? " grayTextColor":""}`,
             }
         })
-        console.log("useeffect");
         setTableData(newSampleTableData);
-    },[]);
+    }
 
 
-    const [tableData, setTableData] = useState(sampleTableData);
+    const [tableData, setTableData] = useState([]);
     const [showAddOrderModal,setShowAddOrderModal] = useState(false);
     return (
         <div className='inventory-mainHolder'>
@@ -185,7 +114,7 @@ function OrderPage(){
     
             <CustomTable tableData={tableData} tableHeader={tableHeader}/>
           </Card>
-          <AddNewOrderModal setTableData={setTableData} showAddOrderModal={showAddOrderModal} setShowAddOrderModal={setShowAddOrderModal}/>
+          <AddNewOrderModal showAddOrderModal={showAddOrderModal} setShowAddOrderModal={setShowAddOrderModal}/>
         </div>
       )
 }

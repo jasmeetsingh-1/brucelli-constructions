@@ -29,7 +29,7 @@ const ContractorsPage = () => {
         }).catch((error)=>{
             console.log("some error in product api", error);
         })
-  },[]);
+  },[showAddContractorModal]);
 
   function formatTableData(data){
     const newSampleTableData = data.map((item)=>{

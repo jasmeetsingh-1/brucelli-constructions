@@ -30,15 +30,14 @@ const Inventory = () => {
         }).catch((error)=>{
             console.log("some error in product api", error);
         })
-
-    },[]);
+    },[showAddProductModal]);
 
     function formatTableData(data){
         const newSampleTableData = data.map((item) => {
             const productAvailablity = 
                 item.quantity > item.threshOldValue ? "In-stock" :
-                item.quantity <= item.threshOldValue && item.quantity > 0 ? "Low stock" : 
-                item.quantity == 0 ? "Out of stock" : "";
+                item.quantity == 0 ? "Out of stock":
+                item.quantity <= item.threshOldValue ? "Low stock" : "";
         
             const colorCode = 
                 productAvailablity === "Low stock" ? "orangeTextColor" : 

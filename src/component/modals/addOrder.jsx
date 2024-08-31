@@ -5,29 +5,30 @@ import profileIcon from "../../assets/profileIcon.svg";
 import { Modal } from "react-bootstrap";
 import { Card } from "../reusable/Card";
 import { Field, Form, Formik } from "formik";
+import axios from "axios";
 
-const AddNewOrderModal = ({showAddOrderModal, setShowAddOrderModal, setTableData}) => {
+const AddNewOrderModal = ({showAddOrderModal, setShowAddOrderModal}) => {
 
-    const addProductInititalValues ={
-        contractorName:"",
-        contractorProductId:"",
-        contractorCategory:"",
-        contractorEmail:"",
-        contractorContactNumber:"",
-        contractorType:"",
+    const placeOrderInitialValues ={
+        newOrderProduct:"",
+        newOrderProductId:"",
+        productCategory:"",
+        newOrderValue:"",
+        newOrderUnit:"",
+        newOrderBuyingPrice:"",
+        newOrderDOD:"",
     };
 
     const newProductSubmitHandler = (value,resetForm) =>{
-        const payload = {
-            supplierName: value.contractorName,
-            product: value.contractorProductId,
-            supplierContactNumber: value.contractorContactNumber,
-            supplierEmail: value.contractorEmail,
-            type: value.contractorType,
-            onTheWay: 34,
-        }
+        const payload = {...value};
+        console.log("[payload >>>>", payload);
+        axios.post("http://localhost:2000/orders/add", payload)
+        .then((result)=>{
+            console.log("Result>>>>>>>>>", result);
+        }).catch((error)=>{
+            console.log("error >>>>>>",error);
+        })
 
-        setTableData((prev)=>[payload, ...prev]);
         setShowAddOrderModal(false);
         resetForm();
     }
@@ -41,85 +42,77 @@ const AddNewOrderModal = ({showAddOrderModal, setShowAddOrderModal, setTableData
         <h3 className="cardHeader">New Order</h3>
         <div className="addNewModalFormHolder">
             <Formik
-                initialValues={addProductInititalValues}
+                initialValues={placeOrderInitialValues}
                 onSubmit={(values,{resetForm})=>{console.log("contractorModal",values); newProductSubmitHandler(values,resetForm)}}
             >
                 {()=>{
                     return <Form className="newProduct-form">
                         <div className="newProduct-form-row">
-                            <label htmlFor="contractorname">Name</label>
+                            <label htmlFor="newOrderProduct">Product Name</label>
                             <Field
                                 type="text"
-                                name="contractorName"
-                                id="contractorname"
-                                placeHolder="Enter Supplier name"
+                                name="newOrderProduct"
+                                id="newOrderProduct"
+                                placeHolder="Enter Product name"
                             />
                         </div>
                         <div className="newProduct-form-row">
-                            <label htmlFor="contractoEmail">Email</label>
+                            <label htmlFor="newOrderProductId">Product ID</label>
                             <Field
                                 type="text"
-                                name="contractorEmail"
-                                id="contractoEmail"
+                                name="newOrderProductId"
+                                id="newOrderProductId"
                                 placeHolder="Enter Contractor Email"
                             />
                         </div>
                         <div className="newProduct-form-row">
-                            <label htmlFor="contractoProduct">Product</label>
+                            <label htmlFor="productCategory">Category</label>
                             <Field
                                 type="text"
-                                name="contractorProductId"
-                                id="contractoProduct"
-                                placeHolder="Enter Product"
+                                name="productCategory"
+                                id="productCategory"
+                                placeHolder="Enter product category"
                             />
                         </div>
                         <div className="newProduct-form-row">
-                            <label htmlFor="contractorCategory">Category</label>
+                            <label htmlFor="newOrderValue">Order Value</label>
                             <Field
                                 type="text"
-                                name="contractorCategory"
-                                id="contractorCategory"
-                                placeHolder="Select Product Category"
+                                name="newOrderValue"
+                                id="newOrderValue"
+                                placeHolder="Enter order value"
                             />
                         </div>
                         <div className="newProduct-form-row">
-                            <label htmlFor="contractorContactNumber">Contact Number</label>
+                            <label htmlFor="newOrderUnit">Unit</label>
                             <Field
                                 type="text"
-                                name="contractorContactNumber"
-                                id="contractorContactNumber"
-                                placeHolder="Enter supplier contact number"
+                                name="newOrderUnit"
+                                id="newOrderUnit"
+                                placeHolder="Enter product Unit"
                             />
                         </div>
                         <div className="newProduct-form-row">
-                            <label>Type</label>
-                            <div className="specialTypeRowContractorModal">
-                                <div>
-                                <Field
-                                    type="radio"
-                                    name="contractorType"
-                                    id="notTakingReturn"
-                                    value="Not taking return"
-                                    placeHolder="Enter threshold value"
-                                /> 
-                                <label htmlFor="notTakingReturn"> Not Taking return</label>
-                                </div>
-                                <div>
-                                    <Field
-                                        type="radio"
-                                        name="contractorType"
-                                        value="Taking return"
-                                        id="takingReturn"
-                                        placeHolder="Enter threshold value"
-                                        /> 
-                                        <label htmlFor="takingReturn">Taking return</label>
-                                </div>
-                                
-                            </div>
+                            <label htmlFor="newOrderBuyingPrice">Buying price</label>
+                            <Field
+                                type="text"
+                                name="newOrderBuyingPrice"
+                                id="newOrderBuyingPrice"
+                                placeHolder="Enter buying price"
+                            />
+                        </div>
+                        <div className="newProduct-form-row">
+                            <label htmlFor="newOrderDOD">Date of delivery</label>
+                            <Field
+                                type="text"
+                                name="newOrderDOD"
+                                id="newOrderDOD"
+                                placeHolder="Enter DOD"
+                            />
                         </div>
                         <div className="modalFooter">
                             <button onClick={(e)=>{e.preventDefault();setShowAddOrderModal(false)}}>Discard</button>
-                            <button type="submit">Add Supplier</button>
+                            <button type="submit">Place Order</button>
                         </div>
                     </Form>
                 }}
