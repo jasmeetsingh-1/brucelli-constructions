@@ -3,116 +3,44 @@ import "./css/contractors.css";
 import { Card } from '../reusable/Card';
 import AddNewContractorModal from '../modals/addContractor';
 import CustomTable from '../reusable/customTags/customTable';
+import axios from "axios";
 
-
-const contractorData = [
-  {
-      supplierName: "Richard Martin",
-      product: "Product 1",
-      supplierContactNumber: "7687764556",
-      supplierEmail: "richard@gmail.com",
-      type: "Taking Return",
-      onTheWay: 13,
-  },
-  {
-      supplierName: "Emily Clark",
-      product: "Product 2",
-      supplierContactNumber: "3456789012",
-      supplierEmail: "emily.clark@example.com",
-      type: "Not Taking Return",
-      onTheWay: 8,
-  },
-  {
-      supplierName: "John Doe",
-      product: "Product 3",
-      supplierContactNumber: "9876543210",
-      supplierEmail: "john.doe@example.com",
-      type: "Taking Return",
-      onTheWay: "",
-  },
-  {
-      supplierName: "Jane Smith",
-      product: "Product 4",
-      supplierContactNumber: "1234567890",
-      supplierEmail: "jane.smith@example.com",
-      type: "Not Taking Return",
-      onTheWay: "",
-  },
-  {
-      supplierName: "Michael Brown",
-      product: "Product 5",
-      supplierContactNumber: "2345678901",
-      supplierEmail: "michael.brown@example.com",
-      type: "Taking Return",
-      onTheWay: 5,
-  },
-  {
-      supplierName: "Sarah Johnson",
-      product: "Product 6",
-      supplierContactNumber: "3456789012",
-      supplierEmail: "sarah.johnson@example.com",
-      type: "Not Taking Return",
-      onTheWay: 10,
-  },
-  {
-      supplierName: "Chris Davis",
-      product: "Product 7",
-      supplierContactNumber: "4567890123",
-      supplierEmail: "chris.davis@example.com",
-      type: "Taking Return",
-      onTheWay: "",
-  },
-  {
-      supplierName: "Patricia Miller",
-      product: "Product 8",
-      supplierContactNumber: "5678901234",
-      supplierEmail: "patricia.miller@example.com",
-      type: "Not Taking Return",
-      onTheWay: 7,
-  },
-  {
-      supplierName: "David Wilson",
-      product: "Product 9",
-      supplierContactNumber: "6789012345",
-      supplierEmail: "david.wilson@example.com",
-      type: "Taking Return",
-      onTheWay: "",
-  },
-  {
-      supplierName: "Laura White",
-      product: "Product 10",
-      supplierContactNumber: "7890123456",
-      supplierEmail: "laura.white@example.com",
-      type: "Not Taking Return",
-      onTheWay: 12,
-  }
-];
 
 const ContractorsPage = () => {
-  const [tableData,setTableData]=useState(contractorData);
+  const [tableData,setTableData]=useState([]);
   const [showAddContractorModal,setShowAddContractorModal]=useState(false);
   
   const tableHeader = [
     { label: "Supplier Name", value: "supplierName" },
     { label: "Product", value: "product" },
-    { label: "Contact Name", value: "supplierContactNumber" },
-    { label: "Email", value: "supplierEmail" },
+    { label: "Contact Name", value: "contractorNumber" },
+    { label: "Email", value: "email" },
     { label: "Type", value: "type" },
     { label: "On the way", value: "onTheWay" }
 ];
 
 
   useEffect(()=>{
-    const newSampleTableData = tableData.map((item)=>{
+    axios.defaults.headers.post['Content-Type'] ='application/json;charset=utf-8';
+        axios.get("http://localhost:2000/contractors/")
+        .then((result)=>{
+            console.log("api resposne >>>>>", result.data);
+            formatTableData(result.data);
+        }).catch((error)=>{
+            console.log("some error in product api", error);
+        })
+  },[]);
+
+  function formatTableData(data){
+    const newSampleTableData = data.map((item)=>{
         return{
           ...item,
           onTheWay: item.onTheWay === "" ? "-" : item.onTheWay, 
-          colorCode:`${item.type === "Taking Return" ? " greenTextColor":" redTextColor"}`
+          colorCode:`${item.type === "Taking return" ? " greenTextColor":" redTextColor"}`
         }
     })
-    console.log("useeffect");
     setTableData(newSampleTableData);
-  },[setShowAddContractorModal]);
+  }
 
 
   return (

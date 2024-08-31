@@ -5,8 +5,9 @@ import profileIcon from "../../assets/profileIcon.svg";
 import { Modal } from "react-bootstrap";
 import { Card } from "../reusable/Card";
 import { Field, Form, Formik } from "formik";
+import axios from "axios";
 
-const AddNewContractorModal = ({showAddContractorModal, setShowAddContractorModal, setTableData}) => {
+const AddNewContractorModal = ({showAddContractorModal, setShowAddContractorModal}) => {
 
     const addProductInititalValues ={
         contractorName:"",
@@ -21,13 +22,18 @@ const AddNewContractorModal = ({showAddContractorModal, setShowAddContractorModa
         const payload = {
             supplierName: value.contractorName,
             product: value.contractorProductId,
-            supplierContactNumber: value.contractorContactNumber,
-            supplierEmail: value.contractorEmail,
+            contractorNumber: value.contractorContactNumber,
+            email: value.contractorEmail,
             type: value.contractorType,
             onTheWay: 34,
         }
 
-        setTableData((prev)=>[payload, ...prev]);
+        axios.post("http://localhost:2000/contractors/add", payload)
+        .then((result)=>{
+            console.log("Result>>>>>>>>>", result);
+        }).catch((error)=>{
+            console.log("error >>>>>>",error);
+        })
         setShowAddContractorModal(false);
         resetForm();
     }
@@ -38,7 +44,7 @@ const AddNewContractorModal = ({showAddContractorModal, setShowAddContractorModa
       show={showAddContractorModal}
     >
       <Card>
-        <h3 className="cardHeader">New Product</h3>
+        <h3 className="cardHeader">Add New Contractor</h3>
         <div className="modalImageDragArea">
             <div className="dragArea dragAreaContractors">
                 <img src={profileIcon} alt="add profile"/>
