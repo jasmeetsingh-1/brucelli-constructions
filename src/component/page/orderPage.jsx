@@ -2,7 +2,7 @@ import React,{useState,useEffect} from "react";
 import "./css/orderPage.css";
 import { Card } from "../reusable/Card";
 import AddNewOrderModal from "../modals/addOrder";
-import CustomTable from "../reusable/customTable";
+import CustomTable from "../reusable/customTags/customTable";
 
 let sampleTableData = [
     {
@@ -89,14 +89,14 @@ let sampleTableData = [
 
 function OrderPage(){
     const tableHeader = [
-        "Products",
-        "Order Value",
-        "Quantity",
-        "Order ID",
-        "Expected Delivery",
-        "Status"
+        { label: "Products", value: "product" },
+        { label: "Order Value", value: "orderValue" },
+        { label: "Quantity", value: "quantity" },
+        { label: "Order ID", value: "orderID" },
+        { label: "Expected Delivery", value: "expectedDeliveryDate" },
+        { label: "Status", value: "status" }
     ];
-    
+        
     
     useEffect(()=>{
         const newSampleTableData = tableData.map((item)=>{

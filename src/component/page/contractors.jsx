@@ -2,7 +2,7 @@ import React,{useEffect, useState} from 'react';
 import "./css/contractors.css";
 import { Card } from '../reusable/Card';
 import AddNewContractorModal from '../modals/addContractor';
-import CustomTable from '../reusable/customTable';
+import CustomTable from '../reusable/customTags/customTable';
 
 
 const contractorData = [
@@ -93,12 +93,12 @@ const ContractorsPage = () => {
   const [showAddContractorModal,setShowAddContractorModal]=useState(false);
   
   const tableHeader = [
-    "Supplier Name",
-    "Product",
-    "Contact Name",
-    "Email",
-    "Type",
-    "On the way"
+    { label: "Supplier Name", value: "supplierName" },
+    { label: "Product", value: "product" },
+    { label: "Contact Name", value: "supplierContactNumber" },
+    { label: "Email", value: "supplierEmail" },
+    { label: "Type", value: "type" },
+    { label: "On the way", value: "onTheWay" }
 ];
 
 

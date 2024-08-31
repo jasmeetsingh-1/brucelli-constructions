@@ -1,4 +1,8 @@
 
+.customTable-mainHolder{
+    width: 100%;
+}
+
 .customTable-mainHolder thead th,
 .customTable-mainHolder tbody td{
     border-bottom: 1px solid #D0D3D9;
@@ -47,6 +51,13 @@
     align-items: center;
     background: transparent;
     transition: background-color ease-in-out 0.5s, border ease-in-out 0.5s;
+}
+
+.error-screen{
+    color: #ff0000a6;
+    text-align: center;
+    margin: 32px;
+    font-size: 22px;
 }
 
 

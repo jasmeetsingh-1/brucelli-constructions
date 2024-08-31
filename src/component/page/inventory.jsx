@@ -3,86 +3,58 @@ import "./css/inventory.css";
 import { Card } from '../reusable/Card';
 import AddProductModal from '../modals/addProduct';
 import InventoryProductComponent from './inventoryProductComponent/inventoryProductComponent';
-import CustomTable from '../reusable/customTable';
-
-
-let sampleTableData = [
-    {
-        product: "Concrete Frames",
-        buyingPrice: "£43",
-        quantity: "43",
-        productUnit: "10m x 5m x 12m",
-        lastOrderedDate: "11/12/22",
-        productAvailablity: "In-stock",
-    },
-    {
-        product: "Glass Panels",
-        buyingPrice: "£75",
-        quantity: "50",
-        productUnit: "2m x 3m",
-        lastOrderedDate: "12/11/22",
-        productAvailablity: "In-stock",
-    },
-    {
-        product: "Aluminum Sheets",
-        buyingPrice: "£35",
-        quantity: "70",
-        productUnit: "3m x 4m",
-        lastOrderedDate: "01/01/23",
-        productAvailablity: "Out of stock",
-    },
-    {
-        product: "Cement Bags",
-        buyingPrice: "£7",
-        quantity: "500",
-        productUnit: "50kg",
-        lastOrderedDate: "15/01/23",
-        productAvailablity: "Low stock",
-    },
-    {
-        product: "Bricks",
-        buyingPrice: "£1",
-        quantity: "1000",
-        productUnit: "Standard",
-        lastOrderedDate: "05/02/23",
-        productAvailablity: "In-stock",
-    },
-    {
-        product: "Paint Cans",
-        buyingPrice: "£15",
-        quantity: "200",
-        productUnit: "5L",
-        lastOrderedDate: "25/02/23",
-        productAvailablity: "Low stock",
-    },
-    {
-        product: "PVC Pipes",
-        buyingPrice: "£10",
-        quantity: "150",
-        productUnit: "2m",
-        lastOrderedDate: "10/03/23",
-        productAvailablity: "Out of stock",
-    }
-];
+import CustomTable from '../reusable/customTags/customTable';
+import axios from 'axios';
 
 const Inventory = () => {
 
-    const [tableData, setTableData] = useState(sampleTableData);
+    const [tableData, setTableData] = useState([]);
     const [showAddProductModal,setShowAddProductModal] = useState(false);
 
-    const tableHeader = ["Product","Buying Price","Quantity","Unit","Last Ordered","Availabilty"];
+    const tableHeader = [
+        { label: "Product", value: "productName" },
+        { label: "Buying Price", value: "buyingPrice" },
+        { label: "Quantity", value: "quantity" },
+        { label: "Unit", value: "unit" },
+        { label: "Last Ordered", value: "lastOrderedDate" },
+        { label: "Availability", value: "productAvailablity" }
+    ];
+    
 
     useEffect(()=>{
-        //this css classes added here would evenutally reflect in the customtable component
-        const newSampleTableData = tableData.map((item)=>{
+        axios.defaults.headers.post['Content-Type'] ='application/json;charset=utf-8';
+        axios.get("http://localhost:2000/products/")
+        .then((result)=>{
+            console.log("api resposne >>>>>", result.data);
+            formatTableData(result.data);
+        }).catch((error)=>{
+            console.log("some error in product api", error);
+        })
+
+    },[]);
+
+    function formatTableData(data){
+        const newSampleTableData = data.map((item) => {
+            const productAvailablity = 
+                item.quantity > item.threshOldValue ? "In-stock" :
+                item.quantity <= item.threshOldValue && item.quantity > 0 ? "Low stock" : 
+                item.quantity == 0 ? "Out of stock" : "";
+        
+            const colorCode = 
+                productAvailablity === "Low stock" ? "orangeTextColor" : 
+                productAvailablity === "In-stock" ? "greenTextColor" : 
+                productAvailablity === "Out of stock" ? "redTextColor" : "";
+        
             return {
                 ...item,
-                colorCode:`${item.productAvailablity === "Low stock" ? " orangeTextColor": item.productAvailablity === "In-stock" ? " greenTextColor": item.productAvailablity === "Out of stock" ? " redTextColor":""}`,
-            }
-        })
-        console.log("useeffect");
+                productAvailablity,
+                colorCode
+            };
+        });
+        
         setTableData(newSampleTableData);
-    },[showAddProductModal]);
+    }
+
 
   return (
     <div className='inventory-mainHolder'>

@@ -3,6 +3,7 @@ import "./css/addProduct.css";
 import { Modal } from "react-bootstrap";
 import { Card } from "../reusable/Card";
 import { Field, Form, Formik } from "formik";
+import axios from "axios";
 
 const AddProductModal = ({showAddProductModal, setShowAddProductModal, setTableData}) => {
 
@@ -20,15 +21,25 @@ const AddProductModal = ({showAddProductModal, setShowAddProductModal, setTableD
 
     const newProductSubmitHandler = (value,resetForm) =>{
         const payload = {
-            product:value.productName,
+            productName:value.productName,
             buyingPrice: value.buyingPrice,
+            productCategory:value.productCategory,
             quantity: value.productQuantity,
-            productUnit: value.productUnit,
+            unit: value.productUnit,
             lastOrderedDate: value.productExpireDate,
+            expiryDate:"11/12/2023",
+            threshOldValue:value.productThresholdValue,
             productAvailablity: "In-stock",
         }
 
-        setTableData((prev)=>[payload, ...prev]);
+        axios.post("http://localhost:2000/products/add", payload)
+        .then((result)=>{
+            console.log("Result>>>>>>>>>", result);
+        }).catch((error)=>{
+            console.log("error >>>>>>",error);
+        })
+
+        // setTableData((prev)=>[payload, ...prev]);
         setShowAddProductModal(false);
         resetForm();
     }
