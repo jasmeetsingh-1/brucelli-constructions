@@ -10,6 +10,7 @@ import CustomButton from '../reusable/customTags/CustomButton';
 const Inventory = () => {
 
     const [tableData, setTableData] = useState([]);
+    const [isLoading , setIsLoading] = useState(false);
     const [showAddProductModal,setShowAddProductModal] = useState(false);
 
     const tableHeader = [
@@ -23,10 +24,11 @@ const Inventory = () => {
     
 
     useEffect(()=>{
+        setIsLoading(true);
         axios.defaults.headers.post['Content-Type'] ='application/json;charset=utf-8';
         axios.get("http://localhost:2000/products/")
         .then((result)=>{
-            console.log("api resposne >>>>>", result.data);
+            setIsLoading(false);
             formatTableData(result.data);
         }).catch((error)=>{
             console.log("some error in product api", error);
@@ -127,7 +129,7 @@ const Inventory = () => {
             </div>
         </div>
 
-        <CustomTable tableHeader={tableHeader} tableData={tableData}/>
+        <CustomTable isLoading={isLoading} tableHeader={tableHeader} tableData={tableData}/>
       </Card>
       <AddProductModal setTableData={setTableData} showAddProductModal={showAddProductModal} setShowAddProductModal={setShowAddProductModal}/> 
       {/* <InventoryProductComponent/> */}

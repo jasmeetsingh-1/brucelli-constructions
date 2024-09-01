@@ -9,6 +9,7 @@ import CustomButton from '../reusable/customTags/CustomButton';
 
 const ContractorsPage = () => {
   const [tableData,setTableData]=useState([]);
+  const [isLoading, setIsLoading] = useState(false);
   const [showAddContractorModal,setShowAddContractorModal]=useState(false);
   
   const tableHeader = [
@@ -22,10 +23,11 @@ const ContractorsPage = () => {
 
 
   useEffect(()=>{
+    setIsLoading(true);
     axios.defaults.headers.post['Content-Type'] ='application/json;charset=utf-8';
         axios.get("http://localhost:2000/contractors/")
         .then((result)=>{
-            console.log("api resposne >>>>>", result.data);
+            setIsLoading(false);
             formatTableData(result.data);
         }).catch((error)=>{
             console.log("some error in product api", error);
@@ -61,7 +63,7 @@ const ContractorsPage = () => {
               </div>
           </div>
 
-          <CustomTable tableData={tableData} tableHeader={tableHeader}/>
+          <CustomTable isLoading={isLoading} tableData={tableData} tableHeader={tableHeader}/>
       </Card>
       <AddNewContractorModal showAddContractorModal={showAddContractorModal} setShowAddContractorModal={setShowAddContractorModal} setTableData={setTableData}/>
       </div>

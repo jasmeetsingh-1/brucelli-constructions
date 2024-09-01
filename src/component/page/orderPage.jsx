@@ -7,6 +7,9 @@ import axios from "axios";
 import CustomButton from "../reusable/customTags/CustomButton";
 
 function OrderPage(){
+
+    const [isLoading, setIsLoading] = useState(false);
+
     const tableHeader = [
         { label: "Products", value: "newOrderProduct" },
         { label: "Order Value", value: "newOrderValue" },
@@ -18,10 +21,11 @@ function OrderPage(){
         
     
     useEffect(()=>{
+        setIsLoading(true);
         axios.defaults.headers.post['Content-Type'] ='application/json;charset=utf-8';
         axios.get("http://localhost:2000/orders/")
         .then((result)=>{
-            console.log("api resposne >>>>>", result.data);
+            setIsLoading(false);
             formatTableData(result.data);
         }).catch((error)=>{
             console.log("some error in product api", error);
@@ -113,7 +117,7 @@ function OrderPage(){
                 </div>
             </div>
     
-            <CustomTable tableData={tableData} tableHeader={tableHeader}/>
+            <CustomTable isLoading={isLoading} tableData={tableData} tableHeader={tableHeader}/>
           </Card>
           <AddNewOrderModal showAddOrderModal={showAddOrderModal} setShowAddOrderModal={setShowAddOrderModal}/>
         </div>
