@@ -4,6 +4,7 @@ import { Card } from '../reusable/Card';
 import AddNewContractorModal from '../modals/addContractor';
 import CustomTable from '../reusable/customTags/customTable';
 import axios from "axios";
+import CustomButton from '../reusable/customTags/CustomButton';
 
 
 const ContractorsPage = () => {
@@ -49,14 +50,14 @@ const ContractorsPage = () => {
           <div className='inventory-productTable-header'>
               <h3 className='cardHeader'>Suppliers</h3>
               <div className='productTable-header-buttons'>
-                  <button onClick={()=>setShowAddContractorModal(true)}>Add Contractor</button>
-                  <button> 
+                  <CustomButton onClick={()=>setShowAddContractorModal(true)}>Add Contractor</CustomButton>
+                  <CustomButton> 
                       <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                           <path d="M5 10H15M2.5 5H17.5M7.5 15H12.5" stroke="#5D6679" strokeWidth="1.67" strokeLinecap="round" strokeLinejoin="round"/>
                       </svg>
                       Filters
-                  </button>
-                  <button>Download all</button>
+                  </CustomButton>
+                  <CustomButton>Download all</CustomButton>
               </div>
           </div>
 

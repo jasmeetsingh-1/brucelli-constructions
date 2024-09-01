@@ -73,32 +73,6 @@
     margin-right: 12px;
 }
 
-.productTable-header-buttons > button:hover{
-    border: 1px solid #1366D9;
-    background-color: #1366D9;
-    color: #fff;
-}
-
-.productTable-header-buttons > button:hover > svg > path{
-    stroke: #fff;
-}
-
-.productTable-header-buttons > button{
-    border: 1px solid #D0D3D9;
-    outline: none;
-    border-radius: 4px;
-    color: #5D6679;
-    font-weight: 500;
-    font-size: 16px;
-    padding: 10px 16px;
-    display: flex;
-    justify-content: center;
-    gap:8px;
-    align-items: center;
-    background: transparent;
-    transition: background-color ease-in-out 0.5s, border ease-in-out 0.5s;
-}
-
 /* table css */
 
 .inventory-productTable{

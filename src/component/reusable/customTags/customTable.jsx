@@ -54,3 +54,10 @@ function CustomTable({ tableData, tableHeader }) {
 }
 
 export default CustomTable;
+
+
+// explaining the Component logic:
+
+// tableHeader prop: The tableHeader prop [contians the array of objects] is mapped over twice:
+// In the header (<thead>): It generates the column headers (<th> elements) by using the label field.
+// In the body (<tbody>): It determines which data to display in each cell (<td> elements) by using the value field to access the corresponding key in each tableData object.
