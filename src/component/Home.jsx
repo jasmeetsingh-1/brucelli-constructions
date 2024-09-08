@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import "./css/Home.css";
 import Sidebar from './sidebar';
 import Dashboard from './page/dashboard';
-import HeaderSearchBar from './reusable/headerSearchBar';
 import Inventory from './page/inventory';
 import ContractorsPage from './page/contractors';
 import OrderPage from './page/orderPage';
@@ -32,7 +31,6 @@ const Home = ({setIsLoggedIn}) => {
             <Sidebar setIsLoggedIn={setIsLoggedIn} sidebarSelected={sidebarSelected} setSidebarSelected={setSidebarSelected}/>
         </section>
       <div className='parentHome-content'>
-        <HeaderSearchBar/>
         <div className='dashboardHolder-home'>
           {renderComponent()}
         </div>

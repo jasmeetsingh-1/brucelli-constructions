@@ -14,7 +14,8 @@ const Login = ({setIsLoggedIn}) => {
         draggable: true,
         progress: undefined,
         theme: "dark",
-      }
+    }
+    
     const loginInitialValues = {
         loginEmail:"",
         loginPassword:"",

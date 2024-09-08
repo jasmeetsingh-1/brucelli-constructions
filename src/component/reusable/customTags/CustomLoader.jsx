@@ -1,6 +1,6 @@
 import React from "react";
 import Lottie from "lottie-react";
-import Loader from "../../../assets/animations/loaderAnimation.json";
+import Loader from "../../../assets/animations/loadingAnimation.json";
 
 const loaderCss = {
     display:"flex",
@@ -15,7 +15,7 @@ function CustomLoader(){
               animationData={Loader}
               loop={true}
               autoplay={true}
-              style={{ height: 250 }}
+              style={{ height: 150 }}
             />
         </div>
     );

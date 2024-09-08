@@ -44,7 +44,10 @@
     transform: translateY(-5px);
 }
 .sidebar-footer{
-    margin-bottom: 42px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    margin: 22px;
 }
 
 .sidebar-footer > button{
@@ -52,7 +55,7 @@
     background: transparent;
     display: flex;
     align-items: center;
-    justify-content: center;
+    /* justify-content: center; */
     gap: 22px;
     color: #5D6679;
     font-size: 18px;
